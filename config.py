@@ -4,7 +4,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 class Config:
-    """Configuration for AI providers and database"""
+    """Configuration and database for RAG application"""
     
     # AI Provider Settings
     GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
@@ -13,55 +13,73 @@ class Config:
     
     # Student Database
     STUDENT_DATABASE = {
-        "STU001": {
+        "S001": {
             "name": "Alice Johnson",
-            "email": "alice@university.edu",
+            "email": "alice.j@university.edu",
             "major": "Computer Science",
             "gpa": 3.8,
-            "courses": ["CS101", "CS201", "MATH101", "MATH201"],
-            "grades": {"CS101": "A", "CS201": "A-", "MATH101": "A", "MATH201": "B+"}
+            "courses": ["CS101", "MATH201", "PHYS101"],
+            "grades": {
+                "CS101": "A",
+                "MATH201": "A-",
+                "PHYS101": "B+"
+            }
         },
-        "STU002": {
+        "S002": {
             "name": "Bob Smith",
-            "email": "bob@university.edu",
-            "major": "Data Science",
-            "gpa": 3.6,
-            "courses": ["CS101", "STAT101", "STAT201", "MATH101"],
-            "grades": {"CS101": "B+", "STAT101": "A", "STAT201": "A-", "MATH101": "A"}
+            "email": "bob.smith@university.edu",
+            "major": "Engineering",
+            "gpa": 3.5,
+            "courses": ["CS101", "MATH201", "ENG301"],
+            "grades": {
+                "CS101": "B+",
+                "MATH201": "B",
+                "ENG301": "A-"
+            }
         },
-        "STU003": {
-            "name": "Carol Davis",
-            "email": "carol@university.edu",
-            "major": "Artificial Intelligence",
+        "S003": {
+            "name": "Carol White",
+            "email": "carol.w@university.edu",
+            "major": "Mathematics",
             "gpa": 3.9,
-            "courses": ["CS101", "CS201", "AI101", "ML101"],
-            "grades": {"CS101": "A", "CS201": "A", "AI101": "A", "ML101": "A-"}
+            "courses": ["MATH201", "PHYS101", "CS201"],
+            "grades": {
+                "MATH201": "A",
+                "PHYS101": "A",
+                "CS201": "A-"
+            }
         }
     }
     
     COURSE_DATABASE = {
         "CS101": {
-            "name": "Introduction to Computer Science",
+            "name": "Introduction to Programming",
             "instructor": "Dr. Smith",
             "credits": 3,
-            "description": "Fundamentals of programming and computer science concepts"
+            "description": "Fundamentals of programming using Python"
+        },
+        "MATH201": {
+            "name": "Calculus II",
+            "instructor": "Prof. Johnson",
+            "credits": 4,
+            "description": "Integral calculus and series"
+        },
+        "PHYS101": {
+            "name": "Physics I",
+            "instructor": "Dr. Brown",
+            "credits": 4,
+            "description": "Mechanics and thermodynamics"
+        },
+        "ENG301": {
+            "name": "Engineering Design",
+            "instructor": "Prof. Davis",
+            "credits": 3,
+            "description": "Introduction to engineering design principles"
         },
         "CS201": {
             "name": "Data Structures",
-            "instructor": "Dr. Johnson",
-            "credits": 4,
-            "description": "Advanced data structures and algorithms"
-        },
-        "AI101": {
-            "name": "Introduction to AI",
-            "instructor": "Dr. Lee",
+            "instructor": "Dr. Smith",
             "credits": 3,
-            "description": "Basics of artificial intelligence and machine learning"
-        },
-        "ML101": {
-            "name": "Machine Learning Fundamentals",
-            "instructor": "Dr. Brown",
-            "credits": 4,
-            "description": "Core concepts of machine learning and deep learning"
+            "description": "Advanced data structures and algorithms"
         }
     }

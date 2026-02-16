@@ -1,0 +1,24 @@
+# Core web framework
+streamlit>=1.28.0
+
+# LLM Providers
+google-generativeai>=0.3.0
+ollama>=0.1.0
+
+# Vector Store & Embeddings (updated versions)
+chromadb>=0.4.22
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4
+
+# Data handling
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Database (if using SQLite/SQLAlchemy)
+sqlalchemy>=2.0.0
+
+# Environment variables
+python-dotenv>=1.0.0
+
+# Optional: For enhanced functionality
+requests>=2.31.0

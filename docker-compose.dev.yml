@@ -1,0 +1,39 @@
+version: '3.8'
+
+services:
+  rag-app-dev:
+    build: .
+    container_name: rag-app-dev
+    ports:
+      - "8501:8501"
+    environment:
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - OLLAMA_BASE_URL=http://ollama:11434
+      - OLLAMA_MODEL=mistral
+    volumes:
+      - .:/app  # Mount entire directory for hot-reload
+      - /app/__pycache__  # Exclude cache
+    depends_on:
+      - ollama
+    networks:
+      - rag-network
+    command: streamlit run ui_streamlit.py --server.address=0.0.0.0 --server.runOnSave=true
+    restart: unless-stopped
+
+  ollama:
+    image: ollama/ollama:latest
+    container_name: ollama-dev
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    networks:
+      - rag-network
+    restart: unless-stopped
+
+volumes:
+  ollama-data:
+
+networks:
+  rag-network:
+    driver: bridge
