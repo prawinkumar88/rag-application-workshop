@@ -1,0 +1,33 @@
+ python3 workshop_basic_gemini_without_rag.py 
+/root/murugeshwari/rag-application-workshop/gemini_no_rag.py:1: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as genai
+============================================================
+WORKSHOP: Gemini WITHOUT RAG (The 'Blind' Model)
+============================================================
+Notice: This model has NO access to your student or course database.
+
+Try these specific questions to see it fail/hallucinate:
+1. What is Alice Johnson's GPA?
+2. Who is the instructor for CS101?
+3. List all students enrolled in Data Science.
+
+============================================================
+Type your question (or 'exit' to quit):
+============================================================
+
+You (No RAG): What is Alice Johnson's GPA?
+
+Assistant (Thinking without context...):
+I do not have access to the personal records or private information of individuals. Additionally, "Alice Johnson" is a very common name, and GPA information is typically protected by privacy laws (such as FERPA in the United States).
+
+If you are referring to a character in a specific book, movie, or a sample dataset from a textbook, please provide more context so I can help you find that information!
+------------------------------------------------------------
+You (No RAG): exit
+
