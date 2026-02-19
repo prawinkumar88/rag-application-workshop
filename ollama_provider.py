@@ -9,17 +9,22 @@ class OllamaProvider:
         self.base_url = Config.OLLAMA_BASE_URL
         self.model = model or Config.OLLAMA_DEFAULT_MODEL
     
-    def query(self, query: str, system_prompt: str) -> str:
-        """Query Ollama with RAG context"""
+    def query(self, query: str, context: str = "") -> str:
+        """Query Ollama with optional context"""
         try:
+            if context:
+                prompt = f"{context}\n\nQuestion: {query}"
+            else:
+                prompt = query
+            
             response = requests.post(
                 f"{self.base_url}/api/generate",
                 json={
                     "model": self.model,
-                    "prompt": f"{system_prompt}\n\nQuestion: {query}",
+                    "prompt": prompt,
                     "stream": False
                 },
-                timeout=60
+                timeout=300
             )
             
             if response.status_code == 200:
