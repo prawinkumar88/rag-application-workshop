@@ -14,8 +14,23 @@ def read_emotions_file(file_path: str) -> str:
 def categorize_emotions_with_gemini(emotions_text: str) -> dict:
     """Use Gemini to categorize emotions into moods"""
     
-    system_prompt = """
-"""
+    system_prompt = """You are an emotion classifier. Analyze the following text containing multiple sentences, each expressing different emotions.
+
+Categorize each sentence into one of three moods: "happy", "neutral", or "sad"
+
+Guidelines:
+- "happy" mood: joy, excitement, pride, gratitude, confidence, amazement, relaxation, celebration
+- "sad" mood: disappointment, anger, fear, guilt, loneliness, embarrassment, worry, nervousness, crying
+- "neutral" mood: surprise, or any emotion that doesn't clearly fit happy or sad
+
+Return ONLY a JSON object with three arrays like this:
+{
+    "happy": ["sentence 1", "sentence 2"],
+    "neutral": ["sentence 3"],
+    "sad": ["sentence 4", "sentence 5"]
+}
+
+Do not include any explanation, just the JSON object."""
 
     try:
         provider = GeminiProvider()

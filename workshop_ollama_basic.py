@@ -15,10 +15,26 @@ def main():
     
     # Initialize Ollama provider
     print("Initializing Ollama provider...")
+    
+    # List available models
+    print("\nChecking available models...")
+    available_models = OllamaProvider.list_models()
+    if available_models:
+        print(f"Found {len(available_models)} available models:")
+        for model in available_models:
+            print(f"  - {model}")
+    else:
+        print("Could not retrieve model list")
+    
+    # Check if configured model is available
+    if not OllamaProvider.check_model_available(Config.OLLAMA_MODEL):
+        print(f"\nWarning: Configured model '{Config.OLLAMA_MODEL}' not found!")
+        print("Please ensure the model is installed with: ollama pull <model-name>")
+        return
+    
     ollama = OllamaProvider()
-    import pdb;pdb.set_trace()
-    print(f"Ollama provider initialized successfully!")
-    print(f"Using model: {Config.OLLAMA_DEFAULT_MODEL}\n")
+    print(f"\nOllama provider initialized successfully!")
+    print(f"Using model: {Config.OLLAMA_MODEL}\n")
     
     # Interactive query loop
     print("=" * 60)
