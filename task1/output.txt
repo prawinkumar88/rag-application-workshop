@@ -1,0 +1,5 @@
+{
+    "happy": ["sentence 1", "sentence 2"],
+    "neutral": ["sentence 3"],
+    "sad": ["sentence 4", "sentence 5"]
+}
